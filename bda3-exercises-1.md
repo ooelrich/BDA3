@@ -16,10 +16,9 @@ Exercise 1.1
 Since *θ* is a discrete variable which takes only the values 1 and 2, the marginal probability density for *y* will be obtained by summing over *θ*
 
 $$\\begin{equation}
-p(y) = \\sum\_{i=1}^2 p(y|\\theta\_i) p(\\theta\_i) = \\frac{1}{2}p\_1(y)+\\frac{1}{2}p\_1(y)
+p(y) = \\sum\_{i=1}^2 p(y|\\theta\_i) p(\\theta\_i) = \\frac{1}{2}p(y|\\theta=1)+\\frac{1}{2}p(y|\\theta=2)
 \\end{equation}$$
-
-where *p*<sub>1</sub>(*y*) is normal with mean 1 and standard deviation *σ* and *p*<sub>2</sub>(*y*) is normal with mean 2 and standard deviation *σ*. Using *σ* = 2 the density will be given by
+ . Using *σ* = 2 the density will be given by
 
 $$\\begin{equation}
 p(y)=\\frac{1}{2} \\frac{1}{\\sqrt{2\\pi 2^2}}e^{-(y-1)^2/(2\*2^2)}   + \\frac{1}{2}\\frac{1}{\\sqrt{2\\pi 2^2}}e^{-(y-2)^2/(2\*2^2)}= \\frac{1}{4\\sqrt{2\\pi}}\\left(e^{-(y-1)^2/(2\*2^2)}+e^{-(y-2)^2/(2\*2^2)}\\right)

@@ -18,10 +18,9 @@ Suggested solutions to some of the exercises in Bayesian Data Analysis 3rd editi
 Since $\theta$ is a discrete variable which takes only the values $1$ and $2$, the marginal probability density for $y$ will be obtained by summing over $\theta$
 
 $$\begin{equation}
-p(y) = \sum_{i=1}^2 p(y|\theta_i) p(\theta_i) = \frac{1}{2}p_1(y)+\frac{1}{2}p_1(y)
+p(y) = \sum_{i=1}^2 p(y|\theta_i) p(\theta_i) = \frac{1}{2}p(y|\theta=1)+\frac{1}{2}p(y|\theta=2)
 \end{equation}$$
-
-where $p_1(y)$ is normal with mean $1$ and standard deviation $\sigma$ and $p_2(y)$ is normal with mean $2$ and standard deviation $\sigma$. Using $\sigma=2$ the density will be given by
+. Using $\sigma=2$ the density will be given by
 
 $$\begin{equation}
 p(y)=\frac{1}{2} \frac{1}{\sqrt{2\pi 2^2}}e^{-(y-1)^2/(2*2^2)}   + \frac{1}{2}\frac{1}{\sqrt{2\pi 2^2}}e^{-(y-2)^2/(2*2^2)}= \frac{1}{4\sqrt{2\pi}}\left(e^{-(y-1)^2/(2*2^2)}+e^{-(y-2)^2/(2*2^2)}\right)
