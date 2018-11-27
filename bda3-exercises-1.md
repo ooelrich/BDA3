@@ -57,3 +57,14 @@ That is, after having observed *y* = 1 we update our believes favouring *θ*
 ### Part c
 
 Given that we have observed *y* = 1, decreasing the value of the variance means that the observation becomes less and less probable under the alternative *θ* = 2 and so the posterior will put more and more weight on *θ* = 1 as the variance decreases. As the variance increases, the probabilities under the two values will creep closer to each other and the posterior will get closer to the prior of $\\frac{1}{2}$.
+
+Exercise 1.2
+------------
+
+We wish to show that the following hold when *u* is a vector
+
+𝔼(*u*)=𝔼(𝔼(𝕦|𝕧))
+
+var(*u*)=𝔼(var(𝕦|𝕧)) + var(𝔼(*u*|*v*))
+
+We start with the conditional mean.
