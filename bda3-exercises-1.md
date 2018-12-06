@@ -63,9 +63,9 @@ Exercise 1.2
 
 We wish to show that the following hold when *u* is a vector
 
-𝔼(*u*)=𝔼(𝔼(𝕦|𝕧))
+𝔼(*u*)=𝔼(𝔼(*u*|*v*))
 
-var(*u*)=𝔼(var(𝕦|𝕧)) + var(𝔼(*u*|*v*))
+var(*u*)=𝔼(var(*u*|*v*)) + var(𝔼(*u*|*v*))
 
 We start with the conditional mean.
 
@@ -76,8 +76,8 @@ Approximately 1/125 of all births are fraternal twins, and approximately 1/300 o
 
 We will solve the problem using Bayes' theorem. We use the following notation.
 
--   *I**T* is the event of an identical twin
--   *F**T* is the event of a fraternal twin
+-   *IT* is the event of an identical twin
+-   *FT* is the event of a fraternal twin
 -   *T* denotes the probability of having a twin and is obtained by summing *I**T* and *F**T*
 -   *B* denotes the probability of having a brother
 
