@@ -76,12 +76,10 @@ Approximately 1/125 of all births are fraternal twins, and approximately 1/300 o
 
 We will solve the problem using Bayes' theorem. We use the following notation.
 
-$$\\begin{itemize}
-\\item $IT$ is the event of an identical twin
-\\item $FT$ is the event of a fraternal twin
-\\item $T$ denotes the probability of having a twin and is obtained by summing $IT$ and $FT$
-\\item $B$ denotes the probability of having a brother
-\\end{itemize}$$
+-   *I**T* is the event of an identical twin
+-   *F**T* is the event of a fraternal twin
+-   *T* denotes the probability of having a twin and is obtained by summing *I**T* and *F**T*
+-   *B* denotes the probability of having a brother
 
 We then have that
 
