@@ -1,8 +1,10 @@
 ---
-title: "BDA3 Exercises: 1"
+title: 'BDA3 Exercises: 1'
 author: "Oscar Oelrich"
 date: "11 november 2018"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
 
