@@ -28,13 +28,16 @@ p(y)=\frac{1}{2} \frac{1}{\sqrt{2\pi 2^2}}e^{-(y-1)^2/(2*2^2)}   + \frac{1}{2}\f
 
 We plot the density
 
-```{r}
+
+```r
 p1 <- function(y) 0.25*(1/sqrt(2*pi))*(exp(-(y-1)^2/(2*2^2))+exp(-(y-2)^2/(2*2^2)))
 # Or we could just use the build in densities from r...
 #p2 <- function(y) 0.5*dnorm(y, 1, 2)+0.5*dnorm(y,2,2)
 x <- seq(-5, 8, 0.001)
 plot(x, p1(x), type = 'l')
 ```
+
+![](bda3-exercises-1_files/figure-latex/unnamed-chunk-1-1.pdf)<!-- --> 
 
 
 
@@ -48,8 +51,13 @@ p(\theta=1|y=1) = \frac{p(y=1|\theta=1) p(\theta=1)}{p(y=1)}
 
 which we calculate to be
 
-```{r}
+
+```r
 dnorm(1,1,2)*0.5/(0.5*dnorm(1, 1, 2)+0.5*dnorm(1,2,2))
+```
+
+```
+## [1] 0.5312094
 ```
 
 That is, after having observed $y=1$ we update our believes favouring $\theta=1$, but not by much.
