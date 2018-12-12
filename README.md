@@ -2,8 +2,8 @@
 Exercises from Bayesian Data Analysis 3rd edition
 
 
-## Vecka 46
+## Chapter 1
 
-  [Exercises Chapter 1](BDA3_chapter1.html)
-  [Exercises Chapter 1.1](BDA3-exercises-1.html)
+  [Exercise 1.1](Exercise1-1.html)
+  [Exercise1.2](Exercise1-2.html)
   

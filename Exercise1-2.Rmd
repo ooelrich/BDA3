@@ -2,7 +2,7 @@
 title: "Exercise 1.2"
 author: "Oscar Oelrich"
 date: "12 december 2018"
-output: github_document
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
