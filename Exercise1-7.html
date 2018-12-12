@@ -129,18 +129,16 @@ $(document).ready(function () {
 </div>
 
 
-<div id="exerecise-1.7" class="section level2">
-<h2>Exerecise 1.7</h2>
 <p>In this exercise we will use Bayes theorem to solve the Monty Hall problem. The key to solving it is in how we chose to condition. Without loss of generality we call the door we choose <strong>A</strong>, the door Monty opens <strong>B</strong> and the last door (that we can potentially switch to) door <strong>C</strong>. We want to calculate the probability of winning when using the two different strategies available to us (switching and not switching). Since we picked door <strong>A</strong>, the probability we are interested in when we want to find the probability of winning using the “not switch” strategy is the probability that the car is behind door <strong>A</strong> given that Monty opened door <strong>B</strong>. We use <span class="math inline">\(M(-)\)</span> to denote Monty opening door -, and <span class="math inline">\(C(-)\)</span> for the car being behind door -.</p>
 <p><span class="math display">\[\begin{equation}
 P(C(A)|M(B))=\frac{P(M(B)|C(A))P(C(A))}{P(M(B))}
 \end{equation}\]</span></p>
 <p>To calculate this probability we need to calculate the following.</p>
-<p><span class="math display">\[\begin{itemize}
-\item $P(M(B)|C(A))$, which is the probability that Monty opens door **B** given that the car is behind door **A**. Since the car is behind **A**, Monty can chose between door **B** and **C** freely, and so this probability is $0.5$.
-\item The unconditional probability that the car is behind any particular door is $P(C(C))=\frac{1}{3}$
-\item The unconditional probability that Monty opens door **B** can be obtained by summing over the conditional probabilities for the car being behind the different doors. If the car is being door **B** it is zero, if the car is behind door **C** it is one and if the car is behind door **A** it is one half, with the probability of the car being behind any particular door being one third for each door, this sums up to one $\frac{1}{2}$.
-\end{itemize}\]</span></p>
+<ul>
+<li><span class="math inline">\(P(M(B)|C(A))\)</span>, which is the probability that Monty opens door <strong>B</strong> given that the car is behind door <strong>A</strong>. Since the car is behind <strong>A</strong>, Monty can chose between door <strong>B</strong> and <strong>C</strong> freely, and so this probability is <span class="math inline">\(0.5\)</span>.</li>
+<li>The unconditional probability that the car is behind any particular door is <span class="math inline">\(P(C(C))=\frac{1}{3}\)</span></li>
+<li>The unconditional probability that Monty opens door <strong>B</strong> can be obtained by summing over the conditional probabilities for the car being behind the different doors. If the car is being door <strong>B</strong> it is zero, if the car is behind door <strong>C</strong> it is one and if the car is behind door <strong>A</strong> it is one half, with the probability of the car being behind any particular door being one third for each door, this sums up to one <span class="math inline">\(\frac{1}{2}\)</span>.</li>
+</ul>
 <p>Plugging in the values into Bayes theorem we obtain</p>
 <p><span class="math display">\[\begin{equation}
 P(C(A)|M(B))=\frac{\frac{1}{2}\frac{1}{3}}{\frac{1}{2}}=\frac{1}{3}
@@ -150,7 +148,6 @@ P(C(A)|M(B))=\frac{\frac{1}{2}\frac{1}{3}}{\frac{1}{2}}=\frac{1}{3}
 P(C(C)|M(B))=\frac{1\frac{1}{3}}{\frac{1}{2}}=\frac{2}{3}
 \end{equation}\]</span></p>
 <p>Note that we could have obtained this by symmetry. Since given that Monty opens door <strong>B</strong>, the car is either behind door <strong>A</strong> or <strong>C</strong>. So if we calculate the probability of it being behind <strong>A</strong> to be one third, then the probability that it is behind door <strong>C</strong> is clearly two thirds.</p>
-</div>
 
 
 

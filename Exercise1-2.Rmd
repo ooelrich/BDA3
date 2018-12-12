@@ -9,7 +9,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Exercise 1.2
 
 We wish to show that the following hold when $u$ is a vector
 
