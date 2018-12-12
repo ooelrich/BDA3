@@ -1,10 +1,14 @@
 ---
-title: 'BDA3 Exercises: 1'
+title: "BDA3_chapter1"
+output: html_document
+---
+
+
+---
+title: "BDA3 Exercises: 1"
 author: "Oscar Oelrich"
 date: "11 november 2018"
-output:
-  html_document:
-    df_print: paged
+output: pdf_document
 ---
 
 
@@ -100,36 +104,6 @@ $$\begin{equation}
 P((IT)|(T,B))=\frac{1*\frac{1}{300}}{\frac{1}{300}+\frac{1}{2}\frac{1}{125}}=\frac{5}{11}
 \end{equation}$$
 
-## Exerecise 1.7
-
-In this exercise we will use Bayes theorem to solve the Monty Hall problem. The key to solving it is in how we chose to condition. Without loss of generality we call the door we choose **A**, the door Monty opens **B** and the last door (that we can potentially switch to) door **C**. We want to calculate the probability of winning when using the two different strategies available to us (switching and not switching). Since we picked door **A**, the probability we are interested in when we want to find the probability of winning using the "not switch" strategy is the probability that the car is behind door **A** given that Monty opened door **B**. We use $M(-)$ to denote Monty opening door -, and $C(-)$ for the car being behind door -.
-
-
-$$\begin{equation}
-P(C(A)|M(B))=\frac{P(M(B)|C(A))P(C(A))}{P(M(B))}
-\end{equation}$$
-
-To calculate this probability we need to calculate the following.
-
-$$\begin{itemize}
-\item $P(M(B)|C(A))$, which is the probability that Monty opens door **B** given that the car is behind door **A**. Since the car is behind **A**, Monty can chose between door **B** and **C** freely, and so this probability is $0.5$.
-\item The unconditional probability that the car is behind any particular door is $P(C(C))=\frac{1}{3}$
-\item The unconditional probability that Monty opens door **B** can be obtained by summing over the conditional probabilities for the car being behind the different doors. If the car is being door **B** it is zero, if the car is behind door **C** it is one and if the car is behind door **A** it is one half, with the probability of the car being behind any particular door being one third for each door, this sums up to one $\frac{1}{2}$.
-\end{itemize}$$
-
-Plugging in the values into Bayes theorem we obtain
-
-$$\begin{equation}
-P(C(A)|M(B))=\frac{\frac{1}{2}\frac{1}{3}}{\frac{1}{2}}=\frac{1}{3}
-\end{equation}$$
-
-If we instead use the "switching" strategy, we only need to calculate one new probability, namely $P(M(B)|C(C))$, since now we are interested in $P(C(C)|M(B))$ (which is the probability of winning by using the switching strategy, we win if the car is behind the door we did not chose and that Monty did not open). Given that the car is behind door **C**, Monty has no choice but to open door **B** so this probability is one. This gives us a chance of winning equal to
-
-$$\begin{equation}
-P(C(C)|M(B))=\frac{1\frac{1}{3}}{\frac{1}{2}}=\frac{2}{3}
-\end{equation}$$
-
-Note that we could have obtained this by symmetry. Since given that Monty opens door **B**, the car is either behind door **A** or **C**. So if we calculate the probability of it being behind **A** to be one third, then the probability that it is behind door **C** is clearly two thirds.
 
 
 
