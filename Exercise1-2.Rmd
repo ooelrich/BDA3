@@ -1,0 +1,26 @@
+---
+title: "Exercise 1.2"
+author: "Oscar Oelrich"
+date: "12 december 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Exercise 1.2
+
+We wish to show that the following hold when $u$ is a vector
+
+$$\begin{equation}
+\mathbb{E}(u) = \mathbb{E}(\mathbb{E}(u|v))
+\end{equation}$$
+
+$$\begin{equation}
+\text{var}(u) = \mathbb{E}(\text{var}(u|v))+\text{var}(\mathbb{E}(u|v))
+\end{equation}$$
+
+We start with the conditional mean. 
+
+

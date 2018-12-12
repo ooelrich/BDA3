@@ -1,0 +1,58 @@
+---
+title: "Exercise 1.1"
+author: "Oscar Oelrich"
+date: "12 december 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Exercise 1.1
+
+### Part a
+
+Since $\theta$ is a discrete variable which takes only the values $1$ and $2$, the marginal probability density for $y$ will be obtained by summing over $\theta$
+
+$$\begin{equation}
+p(y) = \sum_{i=1}^2 p(y|\theta_i) p(\theta_i) = \frac{1}{2}p(y|\theta=1)+\frac{1}{2}p(y|\theta=2)
+\end{equation}$$
+. Using $\sigma=2$ the density will be given by
+
+$$\begin{equation}
+p(y)=\frac{1}{2} \frac{1}{\sqrt{2\pi 2^2}}e^{-(y-1)^2/(2*2^2)}   + \frac{1}{2}\frac{1}{\sqrt{2\pi 2^2}}e^{-(y-2)^2/(2*2^2)}= \frac{1}{4\sqrt{2\pi}}\left(e^{-(y-1)^2/(2*2^2)}+e^{-(y-2)^2/(2*2^2)}\right)
+\end{equation}$$
+
+We plot the density
+
+```{r}
+p1 <- function(y) 0.25*(1/sqrt(2*pi))*(exp(-(y-1)^2/(2*2^2))+exp(-(y-2)^2/(2*2^2)))
+# Or we could just use the build in densities from r...
+#p2 <- function(y) 0.5*dnorm(y, 1, 2)+0.5*dnorm(y,2,2)
+x <- seq(-5, 8, 0.001)
+plot(x, p1(x), type = 'l')
+```
+
+
+
+### Part b
+
+Using Bayes' theorem we have that
+
+$$\begin{equation}
+p(\theta=1|y=1) = \frac{p(y=1|\theta=1) p(\theta=1)}{p(y=1)}
+\end{equation}$$
+
+which we calculate to be
+
+```{r}
+dnorm(1,1,2)*0.5/(0.5*dnorm(1, 1, 2)+0.5*dnorm(1,2,2))
+```
+
+That is, after having observed $y=1$ we update our believes favouring $\theta=1$, but not by much.
+
+### Part c
+
+
+Given that we have observed $y=1$, decreasing the value of the variance means that the observation becomes less and less probable under the alternative $\theta=2$ and so the posterior will put more and more weight on $\theta=1$ as the variance decreases. As the variance increases, the probabilities under the two values will creep closer to each other and the posterior will get closer to the prior of $\frac{1}{2}$.
