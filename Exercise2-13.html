@@ -129,14 +129,129 @@ $(document).ready(function () {
 </div>
 
 
+<table>
+<thead>
+<tr class="header">
+<th>Year</th>
+<th>Fatal accidents</th>
+<th>Passenger deaths</th>
+<th>Death rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1976</td>
+<td>24</td>
+<td>734</td>
+<td>0.19</td>
+</tr>
+<tr class="even">
+<td>1977</td>
+<td>25</td>
+<td>516</td>
+<td>0.12</td>
+</tr>
+<tr class="odd">
+<td>1978</td>
+<td>31</td>
+<td>754</td>
+<td>0.15</td>
+</tr>
+<tr class="even">
+<td>1979</td>
+<td>31</td>
+<td>877</td>
+<td>0.16</td>
+</tr>
+<tr class="odd">
+<td>1980</td>
+<td>22</td>
+<td>814</td>
+<td>0.14</td>
+</tr>
+<tr class="even">
+<td>1981</td>
+<td>21</td>
+<td>362</td>
+<td>0.06</td>
+</tr>
+<tr class="odd">
+<td>1982</td>
+<td>26</td>
+<td>764</td>
+<td>0.13</td>
+</tr>
+<tr class="even">
+<td>1983</td>
+<td>20</td>
+<td>809</td>
+<td>0.13</td>
+</tr>
+<tr class="odd">
+<td>1984</td>
+<td>16</td>
+<td>223</td>
+<td>0.03</td>
+</tr>
+<tr class="even">
+<td>1985</td>
+<td>22</td>
+<td>1066</td>
+<td>0.15</td>
+</tr>
+</tbody>
+</table>
 <div id="part-a" class="section level3">
 <h3>Part a</h3>
+<p>We assume that the number of fatal accidents in a year follows a Poisson distribution with parameter <span class="math inline">\(\theta\)</span>, with probability mass function given by</p>
+<p><span class="math display">\[\begin{equation}
+p(y|\theta) = \frac{\theta^y e^{-\theta}}{y!}
+\end{equation}\]</span></p>
+<p>The conjugate prior of the Poisson is the gamma distribution, which is a distribution with two parameters (<span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>), and density</p>
+<p><span class="math display">\[\begin{equation}
+p(\theta)=\frac{\beta^{\alpha}}{\Gamma(\alpha)} \theta^{\alpha-1}e^{-\beta \theta}
+\end{equation}\]</span></p>
+<p>The likelihood for the ten observations is given by</p>
+<p><span class="math display">\[\begin{equation}
+L(y|\theta)=\prod_{i=1}^{10}\frac{\theta^{y_i} e^{-\theta}}{y_i!} \propto \theta^{\sum_{i=1}^{10} y_i}e^{-n\theta}
+\end{equation}\]</span></p>
+<p>Since we have a conjugate prior, we know that the posterior will be from the same family (gamma), and since the gamma distribution is fully identified by looking at the exponential term and the exponent of <span class="math inline">\(\theta\)</span> we can find it easily by multiplying the relevant parts of the prior and likelihood</p>
+<p><span class="math display">\[\begin{equation}
+p(\theta|y) \propto \theta^{\alpha-1}e^{-\beta \theta}\theta^{\sum_{i=1}^{10} y_i}e^{-n\theta}=\theta^{(\alpha + \sum_{i=1}^{10} y_i) - 1}e^{-(n+\beta)\theta}
+\end{equation}\]</span></p>
+<p>Which tells us that the posterior must be a <span class="math inline">\(gamma(\alpha + \sum_{i=1}^{10} y_i, n+\beta)\)</span> distribution. Since we really don’t have any prior information to go on we pick <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> to be arbitrarily small, and so our posterior is <span class="math inline">\(gamma(\sum_{i=1}^{10} y_i, n)=gamma(238, 10)\)</span>.</p>
+<p>Next we wish to use our prior distribution to make a <span class="math inline">\(95 \%\)</span> predictive interval for the number of accidents the next year. The posterior predictive distribution for the number of accidents next year is given by</p>
+<p><span class="math display">\[\begin{equation}
+p(y_{1986}|y_{1976:1985})= \int p(y_{1986}|\theta) p(\theta|y_{1976:1985}) d\theta
+\end{equation}\]</span></p>
+<p>and we will calculate/approximate it using two different methods: usinng simulation and by approximating the Poisson and gamma distributions with normal distributions.</p>
+<p>The normal approximation approach uses the fact that if both the posterior and the data (conditional on the posterior) follow normal distributions then <span class="math inline">\(p(y_{1986}|\theta) p(\theta)=p(y_{1986},\theta)\)</span> is jointly normal and so the marginal distribution of the predicted value is also normal. All we need to do is to find the mean and variance of the distribution.</p>
+<p>Using the law of total expectation, we find the mean to be</p>
+<p><span class="math display">\[\begin{equation}
+\mathbb{E}(y_{1986}|y_{1976:1985})=\mathbb{E}(\mathbb{E}(y_{1986}|y_{1976:1985},\theta)|y_{1976:1985})=\mathbb{E}(\theta|y_{1976:1985})=\frac{238}{10}=23.8
+\end{equation}\]</span></p>
+<p>where we use the fact that the expectation of the predictive distribution is <span class="math inline">\(\theta\)</span> (using the normal approximation of a <span class="math inline">\(Poisson(\theta)\)</span> distribution, we get that the data follows a <span class="math inline">\(N(\theta, \theta)\)</span> distribution, and thus has mean/expectation equal to <span class="math inline">\(\theta\)</span>), and that the mean of a <span class="math inline">\(gamma(\alpha, \beta)\)</span> is <span class="math inline">\(\frac{\alpha}{\beta}\)</span>.</p>
+<p>In order to find the variance we need to use the formula for conditional variance</p>
+<p><span class="math display">\[\begin{align}
+var(y_{1986}|y_{1976:1985})&amp;=\mathbb{E}(var(y_{1986}|y_{1976:1985}))+var(\mathbb{E}(y_{1986}|y_{1976:1985})) \\
+&amp;=\mathbb{E}(\theta|y_{1976:1985})+var(\theta|y_{1976:1985}) \\
+&amp;= 23.8 + 2.38 = 5.12^2
+\end{align}\]</span></p>
+<p>where again we use that the variance of the data is <span class="math inline">\(\theta\)</span> and that the variance of the gamma distribution is <span class="math inline">\(\frac{\alpha}{\beta^2}\)</span>. So the posterior predictive distribution, using normal approximation, is <span class="math inline">\(N(23.8, 5.12^2)\)</span>. From this we can easily construct a $95 % $ predictive interval as <span class="math inline">\([23.8 \pm 5.12*1.96]=[13.8, 33.8]\)</span> which, considering that the number of accidents is a discrete number, gives the interval <span class="math inline">\([13, 34]\)</span>.</p>
+<p>The other way of solving the exercise is to use Monte Carlo simulation: sample from the posterior distribution and then for each simulated value generate an observation from a Poisson distribution with intensity equal to the simulated value. We can then use the required percentiles of this simulated data to find the <span class="math inline">\(95 \%\)</span> predictive interval.</p>
+<pre class="r"><code>#  generate draws from the posterior
+nobs &lt;- 10000 # number of simulations
+theta &lt;- rgamma(nobs, 238,10)
+y_gen &lt;- rpois(nobs,theta)
+print(sort(y_gen)[c(0.025, 0.975)*nobs]) #computed interval is (13, 34)</code></pre>
+<pre><code>## [1] 14 34</code></pre>
+<p>which is close to, but not exactly equal to, our normal approximation.</p>
 </div>
 <div id="part-b" class="section level3">
 <h3>Part b</h3>
-<div id="part-c" class="section level4">
-<h4>Part c</h4>
 </div>
+<div id="part-c" class="section level3">
+<h3>Part c</h3>
 </div>
 <div id="part-d" class="section level3">
 <h3>Part d</h3>
