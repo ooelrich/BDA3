@@ -9,3 +9,6 @@ Exercises from Bayesian Data Analysis 3rd edition
   [Exercise 1.7](Exercise1-7.html)<br/>
   
 
+## Chapter 2
+
+  [Exercise 2.13](Exercise2-13.html)<br/>

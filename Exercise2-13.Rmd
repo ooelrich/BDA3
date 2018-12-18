@@ -1,0 +1,36 @@
+---
+title: "Exercise 2.13"
+author: "Oscar Oelrich"
+date: "17 december 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Part a
+
+
+
+
+
+
+
+
+### Part b
+
+
+
+
+#### Part c
+
+
+
+
+### Part d
+
+
+
+
+### Part e
