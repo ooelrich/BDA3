@@ -1,0 +1,155 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Exercise 1.7},
+            pdfauthor={Oscar Oelrich},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Exercise 1.7}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Oscar Oelrich}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{12 december 2018}
+
+
+\begin{document}
+\maketitle
+
+In this exercise we will use Bayes theorem to solve the Monty Hall
+problem. The key to solving it is in how we chose to condition. Without
+loss of generality we call the door we choose \textbf{A}, the door Monty
+opens \textbf{B} and the last door (that we can potentially switch to)
+door \textbf{C}. We want to calculate the probability of winning when
+using the two different strategies available to us (switching and not
+switching). Since we picked door \textbf{A}, the probability we are
+interested in when we want to find the probability of winning using the
+``not switch'' strategy is the probability that the car is behind door
+\textbf{A} given that Monty opened door \textbf{B}. We use \(M(-)\) to
+denote Monty opening door -, and \(C(-)\) for the car being behind door
+-.
+
+\[\begin{equation}
+P(C(A)|M(B))=\frac{P(M(B)|C(A))P(C(A))}{P(M(B))}
+\end{equation}\]
+
+To calculate this probability we need to calculate the following.
+
+\begin{itemize}
+\tightlist
+\item
+  \(P(M(B)|C(A))\), which is the probability that Monty opens door
+  \textbf{B} given that the car is behind door \textbf{A}. Since the car
+  is behind \textbf{A}, Monty can chose between door \textbf{B} and
+  \textbf{C} freely, and so this probability is \(0.5\).
+\item
+  The unconditional probability that the car is behind any particular
+  door is \(P(C(C))=\frac{1}{3}\)
+\item
+  The unconditional probability that Monty opens door \textbf{B} can be
+  obtained by summing over the conditional probabilities for the car
+  being behind the different doors. If the car is being door \textbf{B}
+  it is zero, if the car is behind door \textbf{C} it is one and if the
+  car is behind door \textbf{A} it is one half, with the probability of
+  the car being behind any particular door being one third for each
+  door, this sums up to one \(\frac{1}{2}\).
+\end{itemize}
+
+Plugging in the values into Bayes theorem we obtain
+
+\[\begin{equation}
+P(C(A)|M(B))=\frac{\frac{1}{2}\frac{1}{3}}{\frac{1}{2}}=\frac{1}{3}
+\end{equation}\]
+
+If we instead use the ``switching'' strategy, we only need to calculate
+one new probability, namely \(P(M(B)|C(C))\), since now we are
+interested in \(P(C(C)|M(B))\) (which is the probability of winning by
+using the switching strategy, we win if the car is behind the door we
+did not chose and that Monty did not open). Given that the car is behind
+door \textbf{C}, Monty has no choice but to open door \textbf{B} so this
+probability is one. This gives us a chance of winning equal to
+
+\[\begin{equation}
+P(C(C)|M(B))=\frac{1\frac{1}{3}}{\frac{1}{2}}=\frac{2}{3}
+\end{equation}\]
+
+Note that we could have obtained this by symmetry. Since given that
+Monty opens door \textbf{B}, the car is either behind door \textbf{A} or
+\textbf{C}. So if we calculate the probability of it being behind
+\textbf{A} to be one third, then the probability that it is behind door
+\textbf{C} is clearly two thirds.
+
+
+\end{document}
