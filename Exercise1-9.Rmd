@@ -1,0 +1,59 @@
+---
+title: "Exercise 1.9"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+New patients arrive at a doctors office between 9 in the morning and 4 in the afternoon. The time between the arrival of patients follows an exponential distribution with expectation 10 minutes.
+
+Each patient requires between 5 and 20 minutes of doctor time.
+
+### Part a
+
+
+We want to simulate the number of patients that arrive at the office during one day. We simulate from an exponential distribution with mean 10 until we hit a total of 420 minutes (at which time the doctor stops admitting patients).
+
+```{r}
+total_time <- c()
+i <- 1
+while(sum(total_time) < 420){
+  total_time[i] <- rexp(1,1/10)
+  i <- i+1
+}
+total_time <- total_time[-length(total_time)] #remove the first patient that arrived after closing
+cumsum(total_time) # just checking
+```
+
+The number of patients who arrived withtin opening hours this day was
+
+```{r}
+print(length(total_time))
+```
+
+We now wish to determine how many of these patients had to wait for the doctor.
+
+```{r}
+total_time
+waiting_time <- c()
+waiting_time[1] <- 0
+rest_time <- 0
+for(i in 2:length(total_time)){
+  doctor_time <- runif(length(total_time), 5, 20)
+  if(doctor_time[i-1]+rest_time < total_time[i]){
+    waiting_time[i] <- 0
+  }
+  else{
+    waiting_time[i] <- (rest_time+doctor_time[i-1]-total_time[i])
+  }
+  rest_time <- 1 
+}
+```
+
+
+
+
+### Part b
