@@ -7,6 +7,7 @@ Exercises from Bayesian Data Analysis 3rd edition
   [Exercise 1.2 WIP](Exercise1-2.html)<br/>
   [Exercise 1.6](Exercise1-6.html)<br/>
   [Exercise 1.7](Exercise1-7.html)<br/>
+  [Exercise 1.8 WIP](exercise1-8.html)<br/>
   [Exercise 1.9 WIP](Exercise1-9.html)<br/>
   
 
