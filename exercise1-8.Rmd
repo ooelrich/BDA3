@@ -7,4 +7,16 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-WORK IN PROGRESS
+We consider the probability of an event (which we might call "E") subjective if two rational people ("A" and "B") can assign unequal probabilities to it. These probabilities can be considered as conditional probabilities where we condition on the knowledge available to the two people, denoted by $I_A$ and $I_B$.
+
+Philosophical question warning, slightly vague...
+
+### Part a
+
+Consider the probability that a six is obtained when a fair (six-sided) die is rolled, where A has observed the outcome of the die roll but B has not. Given that A has observed the outcome, A will either assign the probability zero or one to the event, whilst person B should assign the probability $\frac{1}{6}$ to the event.
+
+### Part b
+
+Consider the probability that Brazil wins the next world cup in soccer, where A knows nothing about soccer and B knows a great deal about soccer. 
+
+Given that A knows nothing about soccer, it would make sense for this person to assign probability $1/n$ to the event that Brazil wins the next world cup, where $n$ are the number of participating countries (given that Brazil manage to qualify, but let's assume that they do). Person B however, knows that Brazil as a country tends to do very well at football and should give the event that they win the next world cup a probability that is (substantially) larger than $1/n$.
